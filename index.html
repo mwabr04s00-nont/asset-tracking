@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="th" style="font-size: 16px;">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ระบบยืม-คืนครุภัณฑ์</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- ... existing code ... -->
   <style>
     body { font-family: 'Prompt', 'IBM Plex Sans Thai', sans-serif; background-color: #F8FAFC; }
     .sidebar { background: linear-gradient(180deg, #0A192F 0%, #172A45 100%); }
     .nav-active { background-color: #2563EB; color: #FFFFFF !important; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35); }
-    .login-bg { background: radial-gradient(circle at 30% 50%, #1E40AF 0%, #1D4ED8 35%, #172554 100%); }
+    /* พื้นหลังแบบภาพอาคารที่ถูกเบลอและผสมสีเข้ม */
+    .login-bg { 
+      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(10, 25, 47, 0.85); /* สีน้ำเงินเข้มโปร่งแสงทับรูป */
+      background-blend-mode: overlay;
+    }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 antialiased text-base">
@@ -28,152 +24,102 @@
       <button onclick="changeFontSize(1)" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold">A+</button>
     </div>
 
-    <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-7 text-white space-y-6 lg:pr-6">
-        <div><span class="inline-block bg-blue-500/30 border border-blue-400/40 text-blue-100 text-sm px-4 py-1.5 rounded-full font-medium">ระบบจัดการครุภัณฑ์</span></div>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">ระบบยืม-คืน<br>ครุภัณฑ์</h1>
-        <div class="w-16 h-1.5 bg-blue-400 rounded-full"></div>
-        <p class="text-blue-100/90 text-base sm:text-lg font-light max-w-lg leading-relaxed">จัดการการยืม-คืนครุภัณฑ์ของคุณได้อย่างง่ายดาย รวดเร็ว และเป็นระบบ</p>
-        <div class="py-2 flex justify-center lg:justify-start">
-          <div class="w-64 sm:w-72 h-44 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-4 flex items-center justify-center shadow-2xl relative overflow-hidden">
-            <div class="text-center space-y-2">
-              <div class="w-16 h-16 rounded-2xl bg-blue-600/80 text-white mx-auto flex items-center justify-center shadow-lg"><i data-lucide="package" class="w-8 h-8"></i></div>
-              <p class="text-sm text-blue-200 font-light">Asset Management System</p>
+    <!-- Login Card ตรงกลาง -->
+    <div class="bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row w-full max-w-4xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[500px]">
+      
+      <!-- ฝั่งซ้าย (แบรนดิ้ง) -->
+      <div class="md:w-5/12 bg-gradient-to-br from-[#061A3A] to-[#0A2A54] p-10 text-white flex flex-col justify-between relative overflow-hidden">
+        <!-- แสงตกแต่ง -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -mr-20 -mt-20"></div>
+        
+        <div>
+          <div class="flex items-center gap-2 mb-12 relative z-10">
+            <div class="w-8 h-8 rounded-lg bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center shadow-inner">
+              <i data-lucide="shield-check" class="w-5 h-5 text-blue-100"></i>
             </div>
+            <span class="font-semibold tracking-wide text-blue-50">AssetFlow Pro</span>
           </div>
+
+          <h1 class="text-3xl font-bold tracking-tight leading-snug relative z-10">
+            Enterprise<br>Asset Management<br>Platform
+          </h1>
+          <p class="text-blue-100/70 text-sm font-light mt-6 relative z-10 max-w-xs leading-relaxed">
+            ระบบจัดการและยืม-คืนครุภัณฑ์ดิจิทัลแบบครบวงจร ควบคุมสิทธิ์การเข้าถึงระดับองค์กร
+          </p>
         </div>
-        <div class="grid grid-cols-3 gap-3 pt-2">
-          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-300"><i data-lucide="shield-check" class="w-5 h-5"></i></div><div><p class="text-sm font-semibold">ปลอดภัย</p></div></div>
-          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-300"><i data-lucide="clock" class="w-5 h-5"></i></div><div><p class="text-sm font-semibold">รวดเร็ว</p></div></div>
-          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-300"><i data-lucide="bar-chart-2" class="w-5 h-5"></i></div><div><p class="text-sm font-semibold">ตรวจสอบได้</p></div></div>
+
+        <div class="flex gap-2 relative z-10">
+          <div class="w-6 h-1.5 bg-blue-500 rounded-full"></div>
+          <div class="w-1.5 h-1.5 bg-white/30 rounded-full"></div>
+          <div class="w-1.5 h-1.5 bg-white/30 rounded-full"></div>
         </div>
       </div>
 
-      <div class="lg:col-span-5 flex justify-center">
-        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl w-full max-w-md border border-slate-100">
-          <div class="text-center mb-6">
-            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">เข้าสู่ระบบ</h2>
-            <p class="text-sm text-slate-400 font-light mt-1">กรุณาเข้าสู่ระบบเพื่อใช้งานระบบยืม-คืนครุภัณฑ์</p>
-          </div>
-          <form onsubmit="handleLoginSubmit(event)" class="space-y-4 text-sm">
-            <div>
-              <label class="block text-slate-700 font-medium mb-1.5">Username</label>
-              <div class="relative">
-                <i data-lucide="user" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3"></i>
-                <input type="text" id="login-username" required placeholder="กรอกชื่อผู้ใช้งาน" class="w-full border border-slate-200 rounded-xl pl-11 pr-4 py-2.5 outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition text-sm">
-              </div>
+      <!-- ฝั่งขวา (ฟอร์ม) -->
+      <div class="md:w-7/12 p-10 sm:p-12 flex flex-col justify-center bg-white">
+        <h2 class="text-2xl font-bold text-slate-900">เข้าสู่ระบบ</h2>
+        <p class="text-sm text-slate-500 font-light mt-1 mb-8">สำหรับเจ้าหน้าที่ และผู้ดูแลประจำหน่วยงาน</p>
+
+        <form onsubmit="handleLoginSubmit(event)" class="space-y-5 text-sm">
+          <div>
+            <label class="block text-slate-700 font-medium mb-1.5">รหัสหน่วยงาน / ชื่อผู้ใช้งาน</label>
+            <div class="relative">
+              <i data-lucide="user" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3"></i>
+              <input type="text" id="login-username" required placeholder="เช่น 1931001 หรือ admin" class="w-full border border-slate-200/80 bg-slate-50/50 rounded-xl pl-11 pr-4 py-3 outline-none focus:border-blue-600 focus:bg-white transition text-sm">
             </div>
-            <div>
-              <label class="block text-slate-700 font-medium mb-1.5">รหัสผ่าน</label>
-              <div class="relative">
-                <i data-lucide="lock" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3"></i>
-                <input type="password" id="login-password" required placeholder="กรอกรหัสผ่าน" class="w-full border border-slate-200 rounded-xl pl-11 pr-11 py-2.5 outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition text-sm">
-                <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600">
-                  <i data-lucide="eye" id="pwd-icon" class="w-5 h-5"></i>
-                </button>
-              </div>
+          </div>
+          <div>
+            <label class="block text-slate-700 font-medium mb-1.5">รหัสผ่าน</label>
+            <div class="relative">
+              <i data-lucide="lock" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3"></i>
+              <input type="password" id="login-password" required placeholder="••••••••" class="w-full border border-slate-200/80 bg-slate-50/50 rounded-xl pl-11 pr-11 py-3 outline-none focus:border-blue-600 focus:bg-white transition text-sm">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600">
+                <i data-lucide="eye" id="pwd-icon" class="w-5 h-5"></i>
+              </button>
             </div>
-            <button type="submit" id="btn-login-submit" class="w-full bg-[#1D4ED8] hover:bg-blue-700 text-white font-medium py-3 rounded-xl shadow-lg shadow-blue-600/30 transition text-base">เข้าสู่ระบบ</button>
-          </form>
-          <div class="relative my-6 text-center">
-            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
-            <span class="relative bg-white px-3 text-sm text-slate-400">หรือ</span>
           </div>
-          <div class="text-center space-y-2">
-            <p class="text-sm text-slate-400 font-light">เข้าสู่ระบบแบบทั่วไป</p>
-            <button onclick="loginAsGuest()" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition">Guest</button>
+          
+          <div class="pt-2">
+            <button type="submit" id="btn-login-submit" class="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium py-3 rounded-xl shadow-lg shadow-blue-600/20 transition flex items-center justify-center gap-2">
+              เข้าสู่ระบบเพื่อดำเนินการ <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
           </div>
+        </form>
+
+        <div class="relative my-6 text-center">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-100"></div></div>
+          <span class="relative bg-white px-4 text-xs text-slate-400 font-light">สำหรับผู้ขอยืมทั่วไป</span>
         </div>
+
+        <button onclick="loginAsGuest()" class="w-full border border-slate-200 hover:border-blue-400 hover:bg-blue-50 text-slate-700 font-medium py-3 rounded-xl transition flex items-center justify-center gap-2 group">
+          <i data-lucide="scan-line" class="w-5 h-5 text-slate-400 group-hover:text-blue-600 transition"></i> 
+          เข้าใช้งานระบบขอยืมครุภัณฑ์
+        </button>
       </div>
+
     </div>
   </div>
 
   <!-- ================= MAIN APP CONTAINER ================= -->
-  <div id="app-view" class="hidden min-h-screen flex text-slate-800">
-    <aside class="w-64 sidebar text-slate-300 flex flex-col justify-between shrink-0 shadow-2xl z-20">
-      <div>
-        <div class="p-5 border-b border-slate-800/80">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md"><i data-lucide="boxes" class="w-6 h-6"></i></div>
-            <div>
-              <h2 class="text-base font-bold text-white tracking-wide" id="profile-name">Admin</h2>
-              <p class="text-xs text-emerald-400" id="profile-role">Super Admin</p>
-            </div>
-          </div>
-          <p class="text-xs text-slate-400 mt-2 truncate" id="profile-dept">สังกัด: ทุกหน่วยงาน</p>
-        </div>
-        <nav class="p-3 space-y-1.5">
-          <button onclick="navigate('dashboard')" id="nav-dashboard" class="nav-active w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition"><i data-lucide="layout-grid" class="w-5 h-5"></i> แดชบอร์ด</button>
-          <button onclick="navigate('assets')" id="nav-assets" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-800/80 hover:text-white transition"><i data-lucide="package" class="w-5 h-5"></i> รายการทรัพย์สิน</button>
-          <button onclick="navigate('requests')" id="nav-requests" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-800/80 hover:text-white transition"><i data-lucide="receipt-text" class="w-5 h-5"></i> คำขอยืมคืน</button>
-          <button onclick="navigate('reports')" id="nav-reports" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-800/80 hover:text-white transition"><i data-lucide="pie-chart" class="w-5 h-5"></i> รายงานภาพรวม</button>
-          <button onclick="navigate('settings')" id="nav-settings" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-800/80 hover:text-white transition"><i data-lucide="sliders-horizontal" class="w-5 h-5"></i> การตั้งค่า</button>
-        </nav>
-      </div>
-      <div class="p-4 border-t border-slate-800/80">
-        <button onclick="handleLogout()" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm text-rose-400 hover:bg-rose-500/10 border border-rose-500/20 transition"><i data-lucide="log-out" class="w-4 h-4"></i> ออกจากระบบ</button>
-      </div>
-    </aside>
-
-    <div class="flex-1 flex flex-col min-w-0">
-      <header class="bg-white border-b border-slate-100 px-8 py-4 flex flex-wrap justify-between items-center sticky top-0 z-10 gap-3">
-        <div>
-          <h2 class="text-lg font-bold text-slate-900">ระบบยืม-คืนครุภัณฑ์</h2>
-          <p class="text-xs text-slate-400 font-light" id="header-user-desc">ผู้ใช้งานทั่วไป</p>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-1 bg-slate-100 border border-slate-200/80 p-1 rounded-xl text-slate-700">
-            <span class="text-xs px-2 text-slate-400 font-light">ขนาดตัวอักษร:</span>
-            <button onclick="changeFontSize(-1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 shadow-sm flex items-center justify-center text-xs font-bold transition">A-</button>
-            <button onclick="resetFontSize()" class="px-2 h-7 rounded-lg bg-white hover:bg-slate-200 shadow-sm flex items-center justify-center text-xs font-mono font-medium transition" id="font-size-label-main">100%</button>
-            <button onclick="changeFontSize(1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 shadow-sm flex items-center justify-center text-xs font-bold transition">A+</button>
-          </div>
-          <button onclick="openProfileModal()" id="btn-edit-profile" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-slate-200/60"><i data-lucide="key" class="w-3.5 h-3.5"></i> เปลี่ยนรหัสผ่าน</button>
-        </div>
-      </header>
-
-      <main class="flex-1 p-8 overflow-y-auto space-y-6">
-        <!-- 1. VIEW: Dashboard -->
-        <section id="view-dashboard" class="space-y-6">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div><p class="text-sm font-medium text-blue-600">Overview / แดชบอร์ด</p><h3 class="text-3xl font-bold text-slate-900 mt-1">ภาพรวมของระบบ</h3></div>
-            <div class="flex items-center gap-3">
-              <button onclick="openAddAssetModal()" id="btn-quick-add-asset" class="bg-white hover:bg-slate-50 border border-slate-200 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 shadow-sm flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i> เพิ่มทรัพย์สิน</button>
-              <button onclick="openCreateModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-md shadow-blue-500/20 flex items-center gap-2"><i data-lucide="arrow-left-right" class="w-4 h-4"></i> สร้างรายการยืมคืน</button>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm"><p class="text-sm text-slate-400">ทรัพย์สินทั้งหมด</p><p id="stat-total" class="text-3xl font-bold text-slate-800 mt-1">0</p></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm"><p class="text-sm text-slate-400">พร้อมให้ยืม</p><p id="stat-available" class="text-3xl font-bold text-emerald-600 mt-1">0</p></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm"><p class="text-sm text-slate-400">กำลังยืม</p><p id="stat-borrowing" class="text-3xl font-bold text-sky-600 mt-1">0</p></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm"><p class="text-sm text-slate-400">รออนุมัติ</p><p id="stat-pending" class="text-3xl font-bold text-amber-500 mt-1">0</p></div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm"><p class="text-sm text-slate-400">คืนแล้ว</p><p id="stat-returned" class="text-3xl font-bold text-indigo-600 mt-1">0</p></div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-              <div class="flex justify-between items-center mb-4"><h4 class="font-semibold text-slate-800 text-base">รายการที่รอดำเนินการ</h4><span id="pending-badge-count" class="bg-amber-50 text-amber-700 text-xs px-2.5 py-1 rounded-full font-medium">0 รายการ</span></div>
-              <div id="pending-action-list" class="space-y-3"></div>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-              <h4 class="font-semibold text-slate-800 text-base mb-4">คำขอยืมล่าสุด</h4>
-              <div class="overflow-x-auto"><table class="w-full text-left text-sm"><tbody id="dash-table-body" class="divide-y divide-slate-50"></tbody></table></div>
-            </div>
-          </div>
-        </section>
-
+<!-- ... existing code ... -->
         <!-- 2. VIEW: Assets -->
         <section id="view-assets" class="hidden space-y-6">
           <div class="flex justify-between items-center">
             <div><h3 class="text-3xl font-bold text-slate-900">รายการทรัพย์สิน</h3><p class="text-sm text-slate-400 font-light">ครุภัณฑ์และอุปกรณ์ในระบบ</p></div>
             <button onclick="openAddAssetModal()" id="btn-add-asset-main" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-md shadow-blue-500/20 flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i> เพิ่มทรัพย์สิน</button>
           </div>
-          <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col sm:flex-row gap-3 justify-between items-center">
-            <input type="text" id="asset-search" oninput="renderAssetCards()" placeholder="ค้นหารหัส หรือชื่อทรัพย์สิน..." class="border border-slate-200 rounded-xl px-4 py-2 text-sm w-full sm:w-80 outline-none focus:border-blue-600">
-            <select id="asset-status-filter" onchange="renderAssetCards()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white">
-              <option value="ALL">ทั้งหมด</option><option value="พร้อมให้ยืม">พร้อมให้ยืม</option><option value="กำลังยืม">กำลังยืม</option><option value="รออนุมัติ">รออนุมัติ</option>
-            </select>
+          <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-wrap gap-3 justify-between items-center">
+            <input type="text" id="asset-search" oninput="renderAssetCards()" placeholder="ค้นหารหัส หรือชื่อทรัพย์สิน..." class="border border-slate-200 rounded-xl px-4 py-2 text-sm w-full sm:w-64 outline-none focus:border-blue-600">
+            <div class="flex gap-2 w-full sm:w-auto">
+              <select id="asset-dept-filter" onchange="renderAssetCards()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white flex-1 sm:w-48">
+                <option value="ALL">ทุกหน่วยงานเจ้าของ</option>
+              </select>
+              <select id="asset-status-filter" onchange="renderAssetCards()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white flex-1 sm:w-36">
+                <option value="ALL">ทุกสถานะ</option><option value="พร้อมให้ยืม">พร้อมให้ยืม</option><option value="กำลังยืม">กำลังยืม</option><option value="รออนุมัติ">รออนุมัติ</option>
+              </select>
+            </div>
           </div>
-          <div id="assets-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+          <div id="assets-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
         </section>
 
         <!-- 3. VIEW: Requests -->
@@ -183,48 +129,24 @@
             <button onclick="openCreateModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-md shadow-blue-500/20 flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i> สร้างรายการยืมคืน</button>
           </div>
           <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
-            <div class="flex flex-col sm:flex-row gap-3 justify-between items-center">
-              <input type="text" id="req-search" oninput="renderRequestsTable()" placeholder="ค้นหาคำขอ หรือผู้ยืม..." class="border border-slate-200 rounded-xl px-4 py-2 text-sm w-full sm:w-80 outline-none focus:border-blue-600">
-              <select id="req-status-filter" onchange="renderRequestsTable()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white">
-                <option value="ALL">ทุกสถานะ</option><option value="รออนุมัติ">รออนุมัติ</option><option value="กำลังยืม">กำลังยืม</option><option value="คืนแล้ว">คืนแล้ว</option><option value="ยกเลิก">ยกเลิก</option>
-              </select>
+            <div class="flex flex-wrap gap-3 justify-between items-center">
+              <input type="text" id="req-search" oninput="renderRequestsTable()" placeholder="ค้นหาคำขอ หรือผู้ยืม..." class="border border-slate-200 rounded-xl px-4 py-2 text-sm w-full sm:w-64 outline-none focus:border-blue-600">
+              <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                <select id="req-owner-filter" onchange="renderRequestsTable()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white">
+                  <option value="ALL">หน่วยงานเจ้าของ (ทั้งหมด)</option>
+                </select>
+                <select id="req-borrower-filter" onchange="renderRequestsTable()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white">
+                  <option value="ALL">หน่วยงานผู้ยืม (ทั้งหมด)</option>
+                </select>
+                <select id="req-status-filter" onchange="renderRequestsTable()" class="border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none bg-white">
+                  <option value="ALL">ทุกสถานะ</option><option value="รออนุมัติ">รออนุมัติ</option><option value="กำลังยืม">กำลังยืม</option><option value="คืนแล้ว">คืนแล้ว</option><option value="ยกเลิก">ยกเลิก</option>
+                </select>
+              </div>
             </div>
-            <div class="overflow-x-auto">
-              <table class="w-full text-left text-sm border-collapse">
-                <thead><tr class="text-slate-400 border-b border-slate-100 pb-2"><th class="py-3 px-2 font-medium">เลขที่คำขอ</th><th class="py-3 px-2 font-medium">รหัสครุภัณฑ์</th><th class="py-3 px-2 font-medium">รูปภาพ</th><th class="py-3 px-2 font-medium">ทรัพย์สิน</th><th class="py-3 px-2 font-medium">ผู้ยืม</th><th class="py-3 px-2 font-medium">หน่วยงานผู้ยืม</th><th class="py-3 px-2 font-medium">วันที่ยืม</th><th class="py-3 px-2 font-medium">วันที่คืน</th><th class="py-3 px-2 font-medium">สถานะ</th><th class="py-3 px-2 font-medium text-center">จัดการ</th></tr></thead>
-                <tbody id="requests-table-body" class="divide-y divide-slate-50"></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <!-- 4. VIEW: Reports -->
-        <section id="view-reports" class="hidden space-y-6">
-          <div><h3 class="text-3xl font-bold text-slate-900">รายงานภาพรวมเชิงลึก</h3><p class="text-sm text-slate-400 font-light">วิเคราะห์จำนวนและสัดส่วนทรัพย์สินแยกตามหน่วยงานอย่างละเอียด</p></div>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
-              <h4 class="font-semibold text-slate-800 text-base mb-1 self-start">สัดส่วนทรัพย์สินตามหน่วยงาน</h4><p class="text-xs text-slate-400 mb-6 self-start font-light">เปอร์เซ็นต์การถือครองอุปกรณ์ของแต่ละกอง</p>
-              <div class="w-64 h-64 relative flex items-center justify-center"><canvas id="deptPieChart"></canvas></div>
-            </div>
-            <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-              <h4 class="font-semibold text-slate-800 text-base mb-1">จำนวนทรัพย์สินแยกรายหน่วยงาน</h4><p class="text-xs text-slate-400 mb-4 font-light">เปรียบเทียบจำนวนทรัพย์สินทั้งหมด กับสถานะพร้อมให้ยืม</p>
-              <div class="h-64"><canvas id="deptBarChart"></canvas></div>
-            </div>
-          </div>
-          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
-            <h4 class="font-semibold text-slate-800 text-base">ตารางสรุปข้อมูลพัสดุรายหน่วยงาน</h4>
-            <div class="overflow-x-auto">
-              <table class="w-full text-left text-sm border-collapse">
-                <thead><tr class="text-slate-400 border-b border-slate-100 pb-2"><th class="py-2.5 px-3">หน่วยงาน</th><th class="py-2.5 px-3 text-center">รวมทั้งหมด</th><th class="py-2.5 px-3 text-center text-emerald-600">พร้อมให้ยืม</th><th class="py-2.5 px-3 text-center text-sky-600">กำลังยืม</th><th class="py-2.5 px-3 text-center text-amber-600">รออนุมัติ</th><th class="py-2.5 px-3 text-right">อัตราความพร้อม (%)</th></tr></thead>
-                <tbody id="dept-summary-tbody" class="divide-y divide-slate-50"></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
+<!-- ... existing code ... -->
         <!-- 5. VIEW: Settings -->
         <section id="view-settings" class="hidden space-y-6">
-          <div><h3 class="text-3xl font-bold text-slate-900">การตั้งค่าระบบ</h3><p class="text-sm text-slate-400 font-light">จัดการหน่วยงาน และมอบหมายสิทธิ์ Admin ประจำกอง</p></div>
+          <div><h3 class="text-3xl font-bold text-slate-900">การตั้งค่าระบบ</h3><p class="text-sm text-slate-400 font-light">จัดการหน่วยงาน หมวดหมู่ และสิทธิ์ Admin</p></div>
           <div id="admin-management-panel" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
             <div class="flex justify-between items-center">
               <div><h4 class="font-semibold text-slate-800 text-base">ผู้ดูแลระบบประจำหน่วยงาน (Admin Management)</h4><p class="text-xs text-slate-400 font-light">Super Admin สามารถสร้างและลบผู้ดูแลเพื่อมอบหมายงานในแต่ละกองได้</p></div>
@@ -238,194 +160,52 @@
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4"><h4 class="font-semibold text-slate-800 text-base">รายชื่อหน่วยงานในระบบ</h4><div id="dept-list-container" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div></div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4"><h4 class="font-semibold text-slate-800 text-base">หมวดหมู่ทรัพย์สิน</h4><div id="cat-list-container" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div></div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+              <div class="flex justify-between items-center">
+                <h4 class="font-semibold text-slate-800 text-base">รายชื่อหน่วยงานในระบบ</h4>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" id="new-dept-name" placeholder="ชื่อหน่วยงานใหม่" class="border border-slate-200 rounded-xl px-3 py-2 text-sm w-full outline-none focus:border-blue-600">
+                <button onclick="handleAddDept()" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-medium shrink-0">เพิ่ม</button>
+              </div>
+              <div id="dept-list-container" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+              <div class="flex justify-between items-center">
+                <h4 class="font-semibold text-slate-800 text-base">หมวดหมู่ทรัพย์สิน</h4>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" id="new-cat-name" placeholder="ชื่อหมวดหมู่ใหม่" class="border border-slate-200 rounded-xl px-3 py-2 text-sm w-full outline-none focus:border-blue-600">
+                <button onclick="handleAddCat()" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-medium shrink-0">เพิ่ม</button>
+              </div>
+              <div id="cat-list-container" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
+            </div>
           </div>
         </section>
       </main>
     </div>
   </div>
 
-  <!-- ================= MODALS ================= -->
-  <div id="modal-select-asset" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] flex flex-col">
-      <div class="flex justify-between items-center pb-3 border-b border-slate-100"><h3 class="font-bold text-xl text-slate-900">เลือกทรัพย์สินที่พร้อมให้ยืม</h3><button onclick="closeModal('modal-select-asset')" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg"><i data-lucide="x" class="w-6 h-6"></i></button></div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-4">
-        <div><label class="block text-sm font-medium text-slate-600 mb-1">ค้นหารหัสหรือชื่อทรัพย์สิน</label><input type="text" id="picker-search-text" oninput="renderAssetPickerList()" placeholder="พิมพ์รหัส หรือชื่อ..." class="w-full border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none focus:border-blue-600"></div>
-        <div><label class="block text-sm font-medium text-slate-600 mb-1">กรองหน่วยงานเจ้าของ</label><input type="text" id="picker-search-dept" oninput="renderAssetPickerList()" placeholder="พิมพ์ชื่อกอง/ฝ่าย..." class="w-full border border-slate-200 rounded-xl px-3.5 py-2 text-sm outline-none focus:border-blue-600"></div>
-      </div>
-      <div id="picker-asset-list" class="flex-1 overflow-y-auto space-y-3 pr-1 py-1"></div>
-    </div>
-  </div>
-
-  <div id="modal-create" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative">
-      <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-slate-900">สร้างรายการยืมคืน</h3><button onclick="closeModal('modal-create')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
-      <form id="createForm" onsubmit="handleCreateRequest(event)" class="space-y-4 text-sm">
-        <div><label class="block text-slate-600 font-medium mb-1">ชื่อผู้ขอยืม *</label><input type="text" id="modal-borrower" required placeholder="ระบุชื่อ-นามสกุล" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div><label class="block text-slate-600 font-medium mb-1">หน่วยงานผู้ยืม *</label><select id="modal-borrower-dept" required class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600 bg-white"></select></div>
-        <div>
-          <label class="block text-slate-600 font-medium mb-1">รหัสครุภัณฑ์ *</label>
-          <div class="flex gap-2">
-            <input type="text" id="modal-asset-id" readonly required placeholder="กดเลือกทรัพย์สินที่พร้อมยืม" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 outline-none text-slate-700 font-medium">
-            <button type="button" onclick="openAssetPickerModal()" class="shrink-0 bg-[#0F5374] hover:bg-[#0c435e] text-white px-4 py-2 rounded-xl font-medium text-xs shadow-sm transition">เลือกทรัพย์สิน</button>
-          </div>
-        </div>
-        <div><label class="block text-slate-600 font-medium mb-1">สถานที่ตั้ง / นำไปใช้งาน *</label><input type="text" id="modal-location" required placeholder="เช่น ห้องประชุม 2" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div class="flex justify-end gap-2 pt-4"><button type="button" onclick="closeModal('modal-create')" class="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50">ยกเลิก</button><button type="submit" id="btn-save-borrow" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium shadow-md shadow-blue-500/20">บันทึกรายการ</button></div>
-      </form>
-    </div>
-  </div>
-
-  <div id="modal-add-asset" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative">
-      <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-slate-900">เพิ่มทรัพย์สินใหม่</h3><button onclick="closeModal('modal-add-asset')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
-      <form id="addAssetForm" onsubmit="handleSaveAsset(event)" class="space-y-4 text-sm">
-        <div><label class="block text-slate-600 font-medium mb-1">รหัสครุภัณฑ์ *</label><input type="text" id="new-asset-id" required placeholder="เช่น IT-006" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div><label class="block text-slate-600 font-medium mb-1">หมวดหมู่ *</label><select id="new-asset-category" required class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600 bg-white"></select></div>
-        <div><label class="block text-slate-600 font-medium mb-1">รูปภาพ</label><input type="file" id="new-asset-file" accept="image/*" onchange="previewImageFile(event)" class="w-full border border-slate-200 rounded-xl p-2 text-slate-500 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-blue-50 file:text-blue-600"></div>
-        <div id="preview-box" class="h-36 w-full rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 overflow-hidden relative"><span id="preview-placeholder">ตัวอย่างรูปภาพ</span><img id="new-asset-preview" src="" alt="Preview" class="w-full h-full object-cover hidden"></div>
-        <div><label class="block text-slate-600 font-medium mb-1">ชื่อทรัพย์สิน *</label><input type="text" id="new-asset-name" required placeholder="ระบุชื่อทรัพย์สิน" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div><label class="block text-slate-600 font-medium mb-1">หน่วยงานเจ้าของ *</label><select id="new-asset-owner" required class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600 bg-white"></select></div>
-        <div class="flex justify-end gap-2 pt-4"><button type="button" onclick="closeModal('modal-add-asset')" class="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50">ยกเลิก</button><button type="submit" id="btn-save-new-asset" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium shadow-md shadow-blue-500/20">บันทึกทรัพย์สิน</button></div>
-      </form>
-    </div>
-  </div>
-
-  <div id="modal-detail" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-between items-center mb-3"><h3 class="font-bold text-lg text-slate-900">รายละเอียดคำขอยืมพัสดุ</h3><button onclick="closeModal('modal-detail')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
-      <div class="h-44 w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 border border-slate-100"><img id="detail-img" src="" alt="Asset" class="w-full h-full object-cover"></div>
-      <div class="space-y-2.5 text-sm text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-        <div class="flex"><span class="w-32 text-slate-400">เลขที่คำขอ</span><span id="detail-reqId" class="font-semibold text-slate-800"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">รหัสครุภัณฑ์</span><span id="detail-assetId" class="font-semibold text-slate-800"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">ชื่อทรัพย์สิน</span><span id="detail-assetName" class="font-semibold text-slate-800"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">หน่วยงานเจ้าของ</span><span id="detail-ownerDept"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">ชื่อผู้ยืม</span><span id="detail-borrower" class="font-semibold text-slate-800"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">หน่วยงานผู้ยืม</span><span id="detail-borrowerDept"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">สถานที่ตั้ง</span><span id="detail-location"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">เวลาที่บันทึกยืม</span><span id="detail-borrowDate"></span></div>
-        <div class="flex"><span class="w-32 text-slate-400">เวลาส่งคืนจริง</span><span id="detail-returnDate"></span></div>
-        <div class="flex items-center"><span class="w-32 text-slate-400">สถานะ</span><span id="detail-status"></span></div>
-      </div>
-      <div class="flex justify-end gap-2 pt-4 border-t border-slate-100 mt-4" id="detail-actions"></div>
-    </div>
-  </div>
-
+<!-- ... existing code ... -->
   <div id="modal-create-admin" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
       <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-slate-900">เพิ่ม Admin ประจำหน่วยงาน</h3><button onclick="closeModal('modal-create-admin')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
       <form onsubmit="handleCreateAdminSubmit(event)" class="space-y-4 text-sm">
         <div><label class="block text-slate-600 font-medium mb-1">Username (ชื่อผู้ใช้งาน) *</label><input type="text" id="admin-new-username" required placeholder="เช่น admin_service" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
         <div><label class="block text-slate-600 font-medium mb-1">รหัสผ่านเริ่มต้น *</label><input type="password" id="admin-new-password" required placeholder="กำหนดรหัสผ่าน" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div><label class="block text-slate-600 font-medium mb-1">ชื่อ-นามสกุล ผู้ดูแล *</label><input type="text" id="admin-new-name" required placeholder="ระบุชื่อเจ้าหน้าที่" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
+        <!-- เอาช่องชื่อ-นามสกุล ออกตามที่ร้องขอ -->
         <div><label class="block text-slate-600 font-medium mb-1">หน่วยงานที่มอบหมายให้ดูแล *</label><select id="admin-new-dept" required class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600 bg-white"></select></div>
         <div class="flex justify-end gap-2 pt-4"><button type="button" onclick="closeModal('modal-create-admin')" class="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50">ยกเลิก</button><button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium shadow-md shadow-blue-500/20">บันทึก Admin</button></div>
       </form>
     </div>
   </div>
-
-  <div id="modal-profile" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
-      <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-slate-900">เปลี่ยนข้อมูลส่วนตัวและรหัสผ่าน</h3><button onclick="closeModal('modal-profile')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button></div>
-      <form onsubmit="handleUpdateProfile(event)" class="space-y-4 text-sm">
-        <div><label class="block text-slate-600 font-medium mb-1">ชื่อ-นามสกุล</label><input type="text" id="profile-edit-name" required class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div><label class="block text-slate-600 font-medium mb-1">รหัสผ่านใหม่ (หากไม่เปลี่ยนให้เว้นว่างไว้)</label><input type="password" id="profile-edit-password" placeholder="กรอกรหัสผ่านใหม่" class="w-full border border-slate-200 rounded-xl p-2.5 outline-none focus:border-blue-600"></div>
-        <div class="flex justify-end gap-2 pt-4"><button type="button" onclick="closeModal('modal-profile')" class="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50">ยกเลิก</button><button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium shadow-md shadow-blue-500/20">บันทึกการเปลี่ยนแปลง</button></div>
-      </form>
-    </div>
-  </div>
-
+<!-- ... existing code ... -->
   <script>
     // =================================================================================
     // ⚠️ นำ URL จาก Apps Script (แบบ Web app > Execute as: Me > Anyone) มาใส่ที่นี่
     // =================================================================================
     const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzKm6PHtYQ-SIKkOG2acTX81IPU3ITGLYjlV_WExsf9rYR97BuTh7qa7Cqe1i16GNc66Q/exec"; 
-
-    async function apiCall(action, params = {}) {
-      try {
-        const response = await fetch(GAS_API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: action, params: params })
-        });
-        const data = await response.json();
-        if (data.error) throw new Error(data.message);
-        return data;
-      } catch (err) {
-        throw new Error(err.message || 'ไม่สามารถติดต่อเซิร์ฟเวอร์ได้');
-      }
-    }
-
-    let appData = { assets: [], transactions: [], departments: [], categories: [], admins: [] };
-    let currentUser = null;
-    let pieChartInstance = null;
-    let barChartInstance = null;
-    let uploadedImageBase64 = '';
-
-    const BASE_FONT_SIZE = 16;
-    let currentScaleIndex = 0;
-    const fontScales = [ { scale: 0.9, label: '90%' }, { scale: 1.0, label: '100%' }, { scale: 1.15, label: '115%' }, { scale: 1.3, label: '130%' }, { scale: 1.45, label: '145%' } ];
-
-    function applyFontSize() {
-      const selected = fontScales[currentScaleIndex];
-      document.documentElement.style.fontSize = (BASE_FONT_SIZE * selected.scale) + 'px';
-      if (document.getElementById('font-size-label-login')) document.getElementById('font-size-label-login').innerText = selected.label;
-      if (document.getElementById('font-size-label-main')) document.getElementById('font-size-label-main').innerText = selected.label;
-      localStorage.setItem('asset_system_font_scale_idx', currentScaleIndex);
-    }
-    function changeFontSize(delta) {
-      currentScaleIndex += delta;
-      if (currentScaleIndex < 0) currentScaleIndex = 0;
-      if (currentScaleIndex >= fontScales.length) currentScaleIndex = fontScales.length - 1;
-      applyFontSize();
-    }
-    function resetFontSize() { currentScaleIndex = 1; applyFontSize(); }
-
-    window.onload = function() {
-      const savedScale = localStorage.getItem('asset_system_font_scale_idx');
-      if (savedScale !== null && !isNaN(parseInt(savedScale))) currentScaleIndex = parseInt(savedScale);
-      else currentScaleIndex = 1;
-      applyFontSize();
-      lucide.createIcons();
-    };
-
-    function togglePasswordVisibility() {
-      const pwd = document.getElementById('login-password');
-      const icon = document.getElementById('pwd-icon');
-      if (pwd.type === 'password') { pwd.type = 'text'; icon.setAttribute('data-lucide', 'eye-off'); }
-      else { pwd.type = 'password'; icon.setAttribute('data-lucide', 'eye'); }
-      lucide.createIcons();
-    }
-
-    async function handleLoginSubmit(e) {
-      e.preventDefault();
-      const u = document.getElementById('login-username').value;
-      const p = document.getElementById('login-password').value;
-      const btn = document.getElementById('btn-login-submit');
-
-      btn.disabled = true; btn.innerText = 'กำลังตรวจสอบ...';
-      try {
-        const res = await apiCall('loginUser', { username: u, password: p });
-        if (res.success) { currentUser = res.user; enterApplication(); }
-        else alert(res.message);
-      } catch (err) { alert('ผิดพลาด: ' + err.message); } 
-      finally { btn.disabled = false; btn.innerText = 'เข้าสู่ระบบ'; }
-    }
-
-    function loginAsGuest() {
-      currentUser = { username: 'guest', name: 'ผู้เยี่ยมชม (Guest)', role: 'GUEST', dept: 'ทั่วไป' };
-      enterApplication();
-    }
-
-    function handleLogout() {
-      currentUser = null;
-      document.getElementById('app-view').classList.add('hidden');
-      document.getElementById('login-view').classList.remove('hidden');
-      document.getElementById('login-username').value = '';
-      document.getElementById('login-password').value = '';
-    }
-
+// ... existing code ...
     function enterApplication() {
       document.getElementById('login-view').classList.add('hidden');
       document.getElementById('app-view').classList.remove('hidden');
@@ -435,7 +215,7 @@
       document.getElementById('header-user-desc').innerText = currentUser.name + ' (' + currentUser.dept + ')';
 
       const roleBadge = document.getElementById('profile-role');
-      if (currentUser.role === 'SUPER_ADMIN') { roleBadge.innerText = 'Super Admin (ผู้ดูแลหลัก)'; roleBadge.className = 'text-xs text-blue-400'; }
+      if (currentUser.role.includes('SUPER_ADMIN')) { roleBadge.innerText = 'Super Admin (ผู้ดูแลหลัก)'; roleBadge.className = 'text-xs text-blue-400'; }
       else if (currentUser.role === 'DEPT_ADMIN') { roleBadge.innerText = 'Admin ประจำหน่วยงาน'; roleBadge.className = 'text-xs text-emerald-400'; }
       else { roleBadge.innerText = 'ผู้ใช้งานทั่วไป (Guest)'; roleBadge.className = 'text-xs text-slate-400'; }
 
@@ -444,135 +224,58 @@
 
     function applyRoleRestrictions() {
       const isGuest = currentUser.role === 'GUEST';
-      const isSuper = currentUser.role === 'SUPER_ADMIN';
+      const isSuper = currentUser.role.includes('SUPER_ADMIN');
+      const isDeptAdmin = currentUser.role === 'DEPT_ADMIN';
+
+      // 6. เมนูแสดงตามสิทธิ์: Guest (3), Dept (4), Super (5)
+      document.getElementById('nav-reports').style.display = (isSuper || isDeptAdmin) ? 'flex' : 'none';
+      document.getElementById('nav-settings').style.display = isSuper ? 'flex' : 'none';
+      
       document.getElementById('btn-quick-add-asset').style.display = isGuest ? 'none' : 'flex';
       document.getElementById('btn-add-asset-main').style.display = isGuest ? 'none' : 'flex';
-      document.getElementById('nav-settings').style.display = isGuest ? 'none' : 'flex';
       document.getElementById('btn-edit-profile').style.display = isGuest ? 'none' : 'flex';
       document.getElementById('admin-management-panel').style.display = isSuper ? 'block' : 'none';
     }
-
-    function navigate(viewName) {
-      ['dashboard', 'assets', 'requests', 'reports', 'settings'].forEach(v => {
-        document.getElementById('view-' + v).classList.add('hidden');
-        document.getElementById('nav-' + v).className = 'w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:bg-slate-800/80 hover:text-white transition';
-      });
-      document.getElementById('view-' + viewName).classList.remove('hidden');
-      document.getElementById('nav-' + viewName).className = 'nav-active w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-white transition';
-      if (viewName === 'reports') renderCharts();
-      lucide.createIcons();
-    }
-
-    async function loadAllSystemData() {
-      try {
-        const res = await apiCall('getSystemData');
-        appData = res;
-        renderDashboard(); renderAssetCards(); renderRequestsTable(); renderSettings(); populateDropdowns(); lucide.createIcons();
-      } catch (err) { console.error('โหลดข้อมูลล้มเหลว', err); }
-    }
-
-    function renderDashboard() {
-      const total = appData.assets.length;
-      const avail = appData.assets.filter(a => a.status === 'พร้อมให้ยืม').length;
-      const borrowing = appData.assets.filter(a => a.status === 'กำลังยืม').length;
-      const pending = appData.assets.filter(a => a.status === 'รออนุมัติ').length;
-      const returned = appData.transactions.filter(t => t.status === 'คืนแล้ว').length;
-
-      document.getElementById('stat-total').innerText = total; document.getElementById('stat-available').innerText = avail;
-      document.getElementById('stat-borrowing').innerText = borrowing; document.getElementById('stat-pending').innerText = pending;
-      document.getElementById('stat-returned').innerText = returned;
-
-      const actionItems = appData.transactions.filter(t => t.status === 'รออนุมัติ' || t.status === 'กำลังยืม');
-      document.getElementById('pending-badge-count').innerText = actionItems.length + ' รายการ';
-
-      const pList = document.getElementById('pending-action-list');
-      if (actionItems.length === 0) pList.innerHTML = '<div class="text-sm text-slate-400 py-6 text-center">ไม่มีรายการที่รอดำเนินการ</div>';
-      else {
-        pList.innerHTML = actionItems.slice(0, 3).map(item => `
-          <div class="border border-slate-100 bg-slate-50/50 rounded-2xl p-3.5 flex justify-between items-center gap-2">
-            <div>
-              <p class="font-semibold text-sm text-slate-800">${item.reqId} · ${item.assetName}</p>
-              <p class="text-xs text-slate-400 mt-0.5">${item.borrower} (${item.ownerDept})</p>
-              <span class="inline-block mt-1.5 text-xs px-2.5 py-0.5 rounded-full font-medium ${badgeColor(item.status)}">${item.status}</span>
-            </div>
-            <button onclick="viewDetail('${item.reqId}')" class="px-3 py-1.5 text-slate-600 hover:bg-white border border-slate-200 rounded-lg text-xs font-medium">ดูรายละเอียด</button>
-          </div>
-        `).join('');
-      }
-
-      document.getElementById('dash-table-body').innerHTML = appData.transactions.slice(0, 5).map(t => `
-        <tr class="hover:bg-slate-50 cursor-pointer" onclick="viewDetail('${t.reqId}')">
-          <td class="py-3 font-medium">${t.reqId}</td><td class="py-3 text-slate-600">${t.borrower}</td><td class="py-3 text-slate-500">${t.borrowDate}</td>
-          <td class="py-3 text-right"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium ${badgeColor(t.status)}">${t.status}</span></td>
-        </tr>
-      `).join('');
-    }
-
+// ... existing code ...
     function renderAssetCards() {
       const q = (document.getElementById('asset-search').value || '').toLowerCase();
-      const filter = document.getElementById('asset-status-filter').value;
+      const filterStatus = document.getElementById('asset-status-filter').value;
+      const filterDept = document.getElementById('asset-dept-filter').value;
       const grid = document.getElementById('assets-grid');
 
       const filtered = appData.assets.filter(a => {
-        return (a.id + a.name + a.ownerDept + a.category).toLowerCase().includes(q) && (filter === 'ALL' || a.status === filter);
+        const matchQ = (a.id + a.name + a.ownerDept + a.category).toLowerCase().includes(q);
+        const matchStatus = filterStatus === 'ALL' || a.status === filterStatus;
+        const matchDept = filterDept === 'ALL' || a.ownerDept === filterDept;
+        return matchQ && matchStatus && matchDept;
       });
 
-      if (filtered.length === 0) { grid.innerHTML = '<div class="col-span-3 text-center py-10 text-slate-400 text-sm">ไม่พบรายการทรัพย์สิน</div>'; return; }
+      if (filtered.length === 0) { grid.innerHTML = '<div class="col-span-4 text-center py-10 text-slate-400 text-sm">ไม่พบรายการทรัพย์สิน</div>'; return; }
 
       grid.innerHTML = filtered.map(a => {
-        const canDelete = currentUser.role === 'SUPER_ADMIN' || (currentUser.role === 'DEPT_ADMIN' && currentUser.dept === a.ownerDept);
-        return `
-          <div class="bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between">
-            <div>
-              <div class="h-48 w-full bg-slate-100 overflow-hidden relative">
-                <img src="${a.image}" alt="${a.name}" class="w-full h-full object-cover">
-                <span class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-2.5 py-1 rounded-md text-slate-700 shadow-sm">${a.category}</span>
-                ${canDelete ? `<button onclick="handleDeleteAsset('${a.id}', '${a.name}')" title="ลบทรัพย์สินนี้" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 hover:bg-rose-50 text-rose-600 shadow flex items-center justify-center transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>` : ''}
-              </div>
-              <div class="p-5">
-                <h5 class="font-bold text-base text-slate-900 leading-snug">${a.name}</h5><p class="text-sm text-blue-600 font-medium mt-1">${a.id}</p>
-                <p class="text-xs text-slate-400 mt-1">${a.ownerDept}</p>
-                <div class="mt-4"><span class="px-3 py-1 text-xs rounded-full font-medium ${badgeColor(a.status)}">${a.status}</span></div>
-              </div>
-            </div>
-            <div class="p-5 pt-0 flex justify-end"><button onclick="viewAssetDetail('${a.id}')" class="px-4 py-2 border border-slate-200 hover:bg-slate-50 rounded-xl text-xs text-slate-600 font-medium transition">ดูรายละเอียด</button></div>
-          </div>
-        `;
-      }).join('');
-      lucide.createIcons();
-    }
-
+        const canDelete = currentUser.role.includes('SUPER_ADMIN') || (currentUser.role === 'DEPT_ADMIN' && currentUser.dept === a.ownerDept);
+// ... existing code ...
     function renderRequestsTable() {
       const q = (document.getElementById('req-search').value || '').toLowerCase();
-      const filter = document.getElementById('req-status-filter').value;
+      const filterStatus = document.getElementById('req-status-filter').value;
+      const filterOwner = document.getElementById('req-owner-filter').value;
+      const filterBorrower = document.getElementById('req-borrower-filter').value;
       const tbody = document.getElementById('requests-table-body');
 
-      const filtered = appData.transactions.filter(t => (t.reqId + t.borrower + t.assetName).toLowerCase().includes(q) && (filter === 'ALL' || t.status === filter));
+      const filtered = appData.transactions.filter(t => {
+        const matchQ = (t.reqId + t.borrower + t.assetName).toLowerCase().includes(q);
+        const matchStatus = filterStatus === 'ALL' || t.status === filterStatus;
+        const matchOwner = filterOwner === 'ALL' || t.ownerDept === filterOwner;
+        const matchBorrower = filterBorrower === 'ALL' || t.borrowerDept === filterBorrower;
+        return matchQ && matchStatus && matchOwner && matchBorrower;
+      });
 
       if (filtered.length === 0) { tbody.innerHTML = '<tr><td colspan="10" class="py-6 text-center text-slate-400 text-sm">ไม่พบคำขอยืม</td></tr>'; return; }
 
       tbody.innerHTML = filtered.map(t => {
-        const canManage = currentUser.role === 'SUPER_ADMIN' || (currentUser.role === 'DEPT_ADMIN' && currentUser.dept === t.ownerDept);
+        const canManage = currentUser.role.includes('SUPER_ADMIN') || (currentUser.role === 'DEPT_ADMIN' && currentUser.dept === t.ownerDept);
         return `
-          <tr class="hover:bg-slate-50 transition">
-            <td class="py-3.5 px-2 font-medium text-slate-800">${t.reqId}</td><td class="py-3.5 px-2 text-blue-600 font-medium">${t.assetId}</td>
-            <td class="py-3.5 px-2"><img src="${t.image}" class="w-12 h-9 object-cover rounded-lg shadow-sm"></td>
-            <td class="py-3.5 px-2 font-medium text-slate-800">${t.assetName}</td><td class="py-3.5 px-2 text-slate-700">${t.borrower}</td>
-            <td class="py-3.5 px-2 text-slate-400">${t.borrowerDept}</td><td class="py-3.5 px-2 text-slate-500">${t.borrowDate}</td>
-            <td class="py-3.5 px-2 text-slate-500">${t.returnDate || '-'}</td>
-            <td class="py-3.5 px-2"><span class="px-3 py-1 rounded-full text-xs font-medium ${badgeColor(t.status)}">${t.status}</span></td>
-            <td class="py-3.5 px-2 text-center whitespace-nowrap">
-              <div class="flex items-center justify-center gap-1.5">
-                <button onclick="viewDetail('${t.reqId}')" class="px-3 py-1.5 border border-slate-200 hover:bg-slate-50 rounded-lg text-xs font-medium text-slate-600">รายละเอียด</button>
-                ${canManage && t.status === 'รออนุมัติ' ? `<button onclick="confirmQuickAction('${t.reqId}', 'กำลังยืม', 'อนุมัติการยืม')" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium">อนุมัติ</button>` : ''}
-                ${canManage && t.status === 'กำลังยืม' ? `<button onclick="confirmQuickAction('${t.reqId}', 'คืนแล้ว', 'ลงเวลาคืน')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-medium">ลงเวลาคืน</button>` : ''}
-              </div>
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
+// ... existing code ...
     function renderCharts() {
       const deptMap = {};
       appData.departments.forEach(d => { deptMap[d] = { total: 0, avail: 0, borrowing: 0, pending: 0 }; });
@@ -589,197 +292,126 @@
       const totals = depts.map(k => deptMap[k].total);
       const avails = depts.map(k => deptMap[k].avail);
 
+      // Modern Chart Options
+      Chart.defaults.font.family = "'Prompt', 'IBM Plex Sans Thai', sans-serif";
+      Chart.defaults.color = '#64748b';
+
       const pieCtx = document.getElementById('deptPieChart').getContext('2d');
       if (pieChartInstance) pieChartInstance.destroy();
       pieChartInstance = new Chart(pieCtx, {
-        type: 'doughnut', data: { labels: depts.map(d => d.split(' - ')[1] || d), datasets: [{ data: totals, backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#6366F1', '#EC4899', '#8B5CF6', '#14B8A6'] }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } } }
+        type: 'doughnut', 
+        data: { 
+          labels: depts.map(d => d.split(' - ')[1] || d), 
+          datasets: [{ 
+            data: totals, 
+            backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#14B8A6', '#F43F5E'],
+            borderWidth: 0,
+            hoverOffset: 4
+          }] 
+        },
+        options: { 
+          responsive: true, maintainAspectRatio: false, cutout: '70%',
+          plugins: { 
+            legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, font: { size: 12 } } },
+            tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)', padding: 12, cornerRadius: 8 }
+          } 
+        }
       });
 
       const barCtx = document.getElementById('deptBarChart').getContext('2d');
       if (barChartInstance) barChartInstance.destroy();
       barChartInstance = new Chart(barCtx, {
-        type: 'bar', data: { labels: depts.map(d => d.split(' - ')[1] || d), datasets: [ { label: 'ทรัพย์สินทั้งหมด', data: totals, backgroundColor: '#3B82F6', borderRadius: 6 }, { label: 'พร้อมให้ยืม', data: avails, backgroundColor: '#10B981', borderRadius: 6 } ] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { boxWidth: 12, font: { size: 12 } } } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+        type: 'bar', // เปลี่ยนเป็นแนวนอนโดยใช้ indexAxis
+        data: { 
+          labels: depts.map(d => d.split(' - ')[1] || d), 
+          datasets: [ 
+            { label: 'ทรัพย์สินทั้งหมด', data: totals, backgroundColor: '#E2E8F0', hoverBackgroundColor: '#CBD5E1', borderRadius: 6, barPercentage: 0.7 }, 
+            { label: 'พร้อมให้ยืม', data: avails, backgroundColor: '#3B82F6', hoverBackgroundColor: '#2563EB', borderRadius: 6, barPercentage: 0.7 } 
+          ] 
+        },
+        options: { 
+          indexAxis: 'y', // เปลี่ยนเป็นกราฟแนวนอน
+          responsive: true, maintainAspectRatio: false, 
+          plugins: { 
+            legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8, font: { size: 12 } } },
+            tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)', padding: 12, cornerRadius: 8 }
+          }, 
+          scales: { 
+            x: { grid: { color: '#F1F5F9', drawBorder: false }, ticks: { precision: 0 } },
+            y: { grid: { display: false, drawBorder: false } }
+          } 
+        }
       });
-
-      document.getElementById('dept-summary-tbody').innerHTML = Object.keys(deptMap).map(k => {
-        const item = deptMap[k]; const rate = item.total > 0 ? Math.round((item.avail / item.total) * 100) : 0;
-        return `
-          <tr class="hover:bg-slate-50">
-            <td class="py-3 px-3 font-medium text-slate-800">${k}</td><td class="py-3 px-3 text-center font-bold">${item.total}</td>
-            <td class="py-3 px-3 text-center text-emerald-600">${item.avail}</td><td class="py-3 px-3 text-center text-sky-600">${item.borrowing}</td>
-            <td class="py-3 px-3 text-center text-amber-600">${item.pending}</td>
-            <td class="py-3 px-3 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${rate > 50 ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'}">${rate}%</span></td>
-          </tr>
-        `;
-      }).join('');
-    }
-
+// ... existing code ...
     function renderSettings() {
-      const aTbody = document.getElementById('admins-table-body');
-      if (appData.admins) {
-        aTbody.innerHTML = appData.admins.map(adm => `
-          <tr class="hover:bg-slate-50">
-            <td class="py-3 px-3 font-semibold text-slate-800">${adm.username}</td><td class="py-3 px-3">${adm.name}</td>
-            <td class="py-3 px-3"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium ${adm.role.includes('SUPER_ADMIN') ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-600'}">${adm.role}</span></td>
-            <td class="py-3 px-3 text-slate-500">${adm.dept}</td>
-            <td class="py-3 px-3 text-center">${adm.role.includes('Master') ? '<span class="text-xs text-slate-400 italic">ผู้ดูแลหลัก</span>' : `<button onclick="handleDeleteAdmin('${adm.username}')" class="text-rose-500 hover:text-rose-700 text-xs font-medium">ลบ</button>`}</td>
-          </tr>
-        `).join('');
+// ... existing code ...
       }
-      document.getElementById('dept-list-container').innerHTML = appData.departments.map(d => `<div class="p-3 rounded-xl border border-slate-100 bg-slate-50/70 text-sm text-slate-700">${d}</div>`).join('');
-      document.getElementById('cat-list-container').innerHTML = appData.categories.map(c => `<div class="p-3 rounded-xl border border-slate-100 bg-slate-50/70 text-sm text-slate-700">${c}</div>`).join('');
+      
+      document.getElementById('dept-list-container').innerHTML = appData.departments.map(d => `
+        <div class="p-3 rounded-xl border border-slate-100 bg-slate-50/70 text-sm text-slate-700 flex justify-between items-center">
+          <span>${d}</span>
+          <button onclick="handleDeleteDept('${d}')" class="text-rose-400 hover:text-rose-600 bg-white p-1.5 rounded-lg shadow-sm"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+        </div>
+      `).join('');
+      
+      document.getElementById('cat-list-container').innerHTML = appData.categories.map(c => `
+        <div class="p-3 rounded-xl border border-slate-100 bg-slate-50/70 text-sm text-slate-700 flex justify-between items-center">
+          <span>${c}</span>
+          <button onclick="handleDeleteCat('${c}')" class="text-rose-400 hover:text-rose-600 bg-white p-1.5 rounded-lg shadow-sm"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+        </div>
+      `).join('');
     }
 
     function populateDropdowns() {
       const deptOpts = '<option value="">-- เลือกหน่วยงาน --</option>' + appData.departments.map(d => `<option value="${d}">${d}</option>`).join('');
+      const deptFilterOpts = '<option value="ALL">ทุกหน่วยงาน</option>' + appData.departments.map(d => `<option value="${d}">${d}</option>`).join('');
       const catOpts = '<option value="">-- เลือกหมวดหมู่ --</option>' + appData.categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      
       if (document.getElementById('modal-borrower-dept')) document.getElementById('modal-borrower-dept').innerHTML = deptOpts;
       if (document.getElementById('new-asset-category')) document.getElementById('new-asset-category').innerHTML = catOpts;
       if (document.getElementById('admin-new-dept')) document.getElementById('admin-new-dept').innerHTML = deptOpts;
+      
+      if (document.getElementById('asset-dept-filter')) document.getElementById('asset-dept-filter').innerHTML = deptFilterOpts;
+      if (document.getElementById('req-owner-filter')) document.getElementById('req-owner-filter').innerHTML = '<option value="ALL">หน่วยงานเจ้าของ (ทั้งหมด)</option>' + appData.departments.map(d => `<option value="${d}">${d}</option>`).join('');
+      if (document.getElementById('req-borrower-filter')) document.getElementById('req-borrower-filter').innerHTML = '<option value="ALL">หน่วยงานผู้ยืม (ทั้งหมด)</option>' + appData.departments.map(d => `<option value="${d}">${d}</option>`).join('');
+
       if (document.getElementById('new-asset-owner')) document.getElementById('new-asset-owner').innerHTML = (currentUser && currentUser.role === 'DEPT_ADMIN') ? `<option value="${currentUser.dept}">${currentUser.dept}</option>` : deptOpts;
     }
-
-    function badgeColor(st) {
-      if (st === 'พร้อมให้ยืม') return 'bg-emerald-50 text-emerald-700';
-      if (st === 'กำลังยืม') return 'bg-sky-50 text-sky-700';
-      if (st === 'รออนุมัติ') return 'bg-amber-50 text-amber-700';
-      if (st === 'คืนแล้ว') return 'bg-indigo-50 text-indigo-700';
-      if (st === 'ยกเลิก') return 'bg-rose-50 text-rose-600';
-      return 'bg-slate-100 text-slate-600';
-    }
-
-    function openAddAssetModal() { document.getElementById('modal-add-asset').classList.remove('hidden'); }
-    function openCreateModal() { document.getElementById('modal-create').classList.remove('hidden'); }
-    function openCreateAdminModal() { document.getElementById('modal-create-admin').classList.remove('hidden'); }
-    function openProfileModal() { document.getElementById('profile-edit-name').value = currentUser.name; document.getElementById('profile-edit-password').value = ''; document.getElementById('modal-profile').classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-
-    function openAssetPickerModal() { document.getElementById('picker-search-text').value = ''; document.getElementById('picker-search-dept').value = ''; renderAssetPickerList(); document.getElementById('modal-select-asset').classList.remove('hidden'); }
-
-    function renderAssetPickerList() {
-      const qText = (document.getElementById('picker-search-text').value || '').toLowerCase();
-      const qDept = (document.getElementById('picker-search-dept').value || '').toLowerCase();
-      const container = document.getElementById('picker-asset-list');
-
-      const availableAssets = appData.assets.filter(a => a.status === 'พร้อมให้ยืม' && (a.id + ' ' + a.name).toLowerCase().includes(qText) && (a.ownerDept || '').toLowerCase().includes(qDept));
-
-      if (availableAssets.length === 0) { container.innerHTML = `<div class="text-center py-10 text-slate-400 text-sm"><i data-lucide="package-x" class="w-10 h-10 mx-auto mb-2 text-slate-300"></i>ไม่พบทรัพย์สินที่พร้อมให้ยืมตามเงื่อนไขที่ค้นหา</div>`; lucide.createIcons(); return; }
-
-      container.innerHTML = availableAssets.map(a => `
-        <div class="border border-slate-200/80 rounded-2xl p-4 flex items-center justify-between gap-4 hover:border-slate-300 transition bg-white shadow-sm">
-          <div class="flex items-center gap-3.5 min-w-0"><div class="w-20 h-16 sm:w-24 sm:h-18 rounded-xl overflow-hidden bg-slate-100 shrink-0 border border-slate-100"><img src="${a.image}" alt="${a.name}" class="w-full h-full object-cover"></div>
-            <div class="min-w-0"><h4 class="font-bold text-sm sm:text-base text-slate-900 truncate">${a.id} · ${a.name}</h4><p class="text-xs text-slate-400 mt-0.5 truncate">${a.ownerDept}</p><div class="mt-2"><span class="inline-block px-3 py-0.5 rounded-md text-xs font-medium bg-emerald-50 text-emerald-700">พร้อมให้ยืม</span></div></div>
-          </div>
-          <button type="button" onclick="selectAssetFromPicker('${a.id}')" class="shrink-0 bg-[#0F5374] hover:bg-[#0c435e] text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-sm transition">เลือก</button>
-        </div>`).join('');
-      lucide.createIcons();
-    }
-
-    function selectAssetFromPicker(assetId) { document.getElementById('modal-asset-id').value = assetId; closeModal('modal-select-asset'); }
-
-    function previewImageFile(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          uploadedImageBase64 = evt.target.result;
-          document.getElementById('new-asset-preview').src = uploadedImageBase64;
-          document.getElementById('new-asset-preview').classList.remove('hidden');
-          document.getElementById('preview-placeholder').classList.add('hidden');
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    async function handleSaveAsset(e) {
-      e.preventDefault();
-      const assetId = document.getElementById('new-asset-id').value.trim();
-      const assetName = document.getElementById('new-asset-name').value.trim();
-      const ownerDept = document.getElementById('new-asset-owner').value;
-
-      if (!confirm(`ยืนยันบันทึกทรัพย์สินใหม่นี้หรือไม่?\n\n• รหัสครุภัณฑ์: ${assetId}\n• ชื่อทรัพย์สิน: ${assetName}\n• หน่วยงาน: ${ownerDept}`)) return;
-
-      const btn = document.getElementById('btn-save-new-asset'); btn.disabled = true; btn.innerText = 'กำลังบันทึก...';
-      const payload = { assetId, assetName, category: document.getElementById('new-asset-category').value, ownerDept, imageBase64: uploadedImageBase64 };
-
-      try {
-        const res = await apiCall('addNewAsset', { form: payload, currentUser: currentUser });
-        alert(res.message); closeModal('modal-add-asset'); document.getElementById('addAssetForm').reset(); uploadedImageBase64 = ''; loadAllSystemData();
-      } catch (err) { alert('ผิดพลาด: ' + err.message); } finally { btn.disabled = false; btn.innerText = 'บันทึกทรัพย์สิน'; }
-    }
-
-    async function handleDeleteAsset(assetId, assetName) {
-      if (!confirm(`⚠️ ยืนยันลบทรัพย์สินนี้?\n\n• รหัส: ${assetId}\n• ชื่อ: ${assetName}`)) return;
-      try { const res = await apiCall('deleteAsset', { assetId: assetId, currentUser: currentUser }); alert(res.message); loadAllSystemData(); } catch(err) { alert('ไม่สามารถลบได้: ' + err.message); }
-    }
-
-    async function handleCreateRequest(e) {
-      e.preventDefault();
-      const borrower = document.getElementById('modal-borrower').value.trim();
-      const assetId = document.getElementById('modal-asset-id').value;
-
-      if (!confirm(`ยืนยันสร้างรายการยืมคืนสำหรับ ${borrower}?`)) return;
-
-      const btn = document.getElementById('btn-save-borrow'); btn.disabled = true; btn.innerText = 'กำลังบันทึก...';
-      const payload = { borrower, borrowerDept: document.getElementById('modal-borrower-dept').value, assetId, location: document.getElementById('modal-location').value };
-
-      try {
-        const res = await apiCall('createBorrowRequest', { form: payload });
-        alert(res.message); closeModal('modal-create'); document.getElementById('createForm').reset(); loadAllSystemData();
-      } catch (err) { alert('ผิดพลาด: ' + err.message); } finally { btn.disabled = false; btn.innerText = 'บันทึกรายการ'; }
-    }
-
-    function viewDetail(reqId) {
-      const t = appData.transactions.find(x => x.reqId === reqId);
-      if (!t) return;
-
-      document.getElementById('detail-img').src = t.image; document.getElementById('detail-reqId').innerText = t.reqId; document.getElementById('detail-assetId').innerText = t.assetId;
-      document.getElementById('detail-assetName').innerText = t.assetName; document.getElementById('detail-ownerDept').innerText = t.ownerDept; document.getElementById('detail-borrower').innerText = t.borrower;
-      document.getElementById('detail-borrowerDept').innerText = t.borrowerDept; document.getElementById('detail-location').innerText = t.location; document.getElementById('detail-borrowDate').innerText = t.borrowDate;
-      document.getElementById('detail-returnDate').innerText = t.returnDate || '—'; document.getElementById('detail-status').innerHTML = `<span class="px-3 py-1 rounded-full text-xs font-medium ${badgeColor(t.status)}">${t.status}</span>`;
-
-      const canManage = currentUser.role.includes('SUPER_ADMIN') || (currentUser.role === 'DEPT_ADMIN' && currentUser.dept === t.ownerDept);
-      const actions = document.getElementById('detail-actions');
-
-      if (canManage && t.status === 'รออนุมัติ') actions.innerHTML = `<button onclick="confirmQuickAction('${t.reqId}', 'กำลังยืม', 'อนุมัติการยืม')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm">อนุมัติการยืม</button><button onclick="confirmQuickAction('${t.reqId}', 'ยกเลิก', 'ยกเลิกคำขอ')" class="px-5 py-2.5 border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-xl text-sm">ยกเลิกคำขอ</button>`;
-      else if (canManage && t.status === 'กำลังยืม') actions.innerHTML = `<button onclick="confirmQuickAction('${t.reqId}', 'คืนแล้ว', 'ลงเวลาคืน')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium text-sm">ลงเวลาคืน</button>`;
-      else actions.innerHTML = `<button onclick="closeModal('modal-detail')" class="px-5 py-2.5 border border-slate-200 text-slate-600 rounded-xl text-sm">ปิด</button>`;
-      document.getElementById('modal-detail').classList.remove('hidden');
-    }
-
-    function viewAssetDetail(assetId) {
-      const relatedTx = appData.transactions.find(t => t.assetId === assetId && (t.status === 'รออนุมัติ' || t.status === 'กำลังยืม'));
-      if (relatedTx) viewDetail(relatedTx.reqId); else alert('รหัสครุภัณฑ์: ' + assetId + ' (สถานะพร้อมให้ยืม)');
-    }
-
-    async function confirmQuickAction(reqId, newStatus, actionName) {
-      if (!confirm(`ยืนยันที่จะ "${actionName}" สำหรับคำขอเลขที่ ${reqId} ใช่หรือไม่?`)) return;
-      closeModal('modal-detail');
-      try { const res = await apiCall('updateTxStatus', { reqId, newStatus, currentUser }); alert(res.message); loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
-    }
-
+// ... existing code ...
     async function handleCreateAdminSubmit(e) {
       e.preventDefault();
-      const payload = { username: document.getElementById('admin-new-username').value, password: document.getElementById('admin-new-password').value, name: document.getElementById('admin-new-name').value, dept: document.getElementById('admin-new-dept').value };
-      if (!confirm(`ยืนยันแต่งตั้ง ${payload.name} เป็น Admin ประจำ ${payload.dept}?`)) return;
+      // เอา name ออก
+      const payload = { username: document.getElementById('admin-new-username').value, password: document.getElementById('admin-new-password').value, dept: document.getElementById('admin-new-dept').value };
+      if (!confirm(`ยืนยันแต่งตั้ง Admin ประจำ ${payload.dept}?`)) return;
       try { const res = await apiCall('createDeptAdmin', { form: payload, currentUser }); alert(res.message); closeModal('modal-create-admin'); loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
     }
 
     async function handleDeleteAdmin(username) {
-      if (!confirm(`⚠️ ยืนยันลบสิทธิ์ Admin ของ ${username}?`)) return;
-      try { const res = await apiCall('deleteDeptAdmin', { username, currentUser }); alert(res.message); loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
-    }
-
-    async function handleUpdateProfile(e) {
-      e.preventDefault();
-      const payload = { name: document.getElementById('profile-edit-name').value, password: document.getElementById('profile-edit-password').value };
-      if (!confirm('ยืนยันอัปเดตข้อมูลส่วนตัว?')) return;
+// ... existing code ...
       try {
         const res = await apiCall('updateAdminProfile', { form: payload, currentUser }); alert(res.message);
         currentUser.name = payload.name; document.getElementById('profile-name').innerText = currentUser.name; closeModal('modal-profile');
       } catch (err) { alert('ผิดพลาด: ' + err.message); }
+    }
+
+    // ฟังก์ชันจัดการหมวดหมู่และหน่วยงาน (Settings)
+    async function handleAddDept() {
+      const name = document.getElementById('new-dept-name').value.trim();
+      if (!name) return;
+      try { await apiCall('addDepartment', { name, currentUser }); document.getElementById('new-dept-name').value = ''; loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
+    }
+    async function handleDeleteDept(name) {
+      if (!confirm('ยืนยันลบหน่วยงาน ' + name + '?')) return;
+      try { await apiCall('deleteDepartment', { name, currentUser }); loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
+    }
+    async function handleAddCat() {
+      const name = document.getElementById('new-cat-name').value.trim();
+      if (!name) return;
+      try { await apiCall('addCategory', { name, currentUser }); document.getElementById('new-cat-name').value = ''; loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
+    }
+    async function handleDeleteCat(name) {
+      if (!confirm('ยืนยันลบหมวดหมู่ ' + name + '?')) return;
+      try { await apiCall('deleteCategory', { name, currentUser }); loadAllSystemData(); } catch (err) { alert('ผิดพลาด: ' + err.message); }
     }
   </script>
 </body>
